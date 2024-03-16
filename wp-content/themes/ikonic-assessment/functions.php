@@ -11,12 +11,34 @@ add_action('init', 'redirect_users_by_ip');
 
 function redirect_users_by_ip() {
     $user_ip = $_SERVER['REMOTE_ADDR'];
-    print_r($user_ip);
     if (strpos($user_ip, '77.29') == 0) {
-        wp_redirect('https://ikonicsolution.com/');
-        exit;
+        // wp_redirect('https://ikonicsolution.com/');
+        // exit;
     }
 }
+
+
+// Create a  post type Projects
+add_action('init', function() {
+    register_post_type('projects', [
+        'labels' => ['name' => __('Projects'), 'singular_name' => __('Project')],
+        'public' => true,
+        'has_archive' => true,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'taxonomies' => ['project_type'],
+        'rewrite' => ['slug' => 'projects']
+    ]);
+});
+
+// Create a taxonomy of post type Projects
+add_action('init', function() {
+    register_taxonomy('project_type', 'projects', [
+        'label' => __('Project Type'),
+        'hierarchical' => true,
+        'public' => true,
+        'rewrite' => ['slug' => 'project-type']
+    ]);
+});
 
 
 
