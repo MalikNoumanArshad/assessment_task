@@ -24,7 +24,7 @@ add_action('init', function() {
         'labels' => ['name' => __('Projects'), 'singular_name' => __('Project')],
         'public' => true,
         'has_archive' => true,
-        'supports' => ['title', 'editor', 'thumbnail'],
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'revisions', 'page-attributes', 'post-formats', 'paged' ),
         'taxonomies' => ['project_type'],
         'rewrite' => ['slug' => 'projects']
     ]);
