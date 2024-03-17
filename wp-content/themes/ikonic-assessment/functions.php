@@ -20,8 +20,8 @@ add_action('init', 'redirect_users_by_ip');
 function redirect_users_by_ip() {
     $user_ip = $_SERVER['REMOTE_ADDR'];
     if (strpos($user_ip, '77.29') == 0) {
-        // wp_redirect('https://ikonicsolution.com/');
-        // exit;
+        wp_redirect('https://ikonicsolution.com/');
+        exit;
     }
 }
 
