@@ -104,4 +104,41 @@ function hs_give_me_coffee() {
 }
 
 
+
+//Use this API https://api.kanye.rest/ and show 5 quotes on a page
+
+function get_ikonic_quotes() {
+    $quotes = array();
+
+    for ($i = 0; $i < 5; $i++) {
+        $response = wp_remote_get('https://api.kanye.rest/');
+        if (!is_wp_error($response)) {
+            $body = wp_remote_retrieve_body($response);
+            $data = json_decode($body);
+            if ($data && isset($data->quote)) {
+                $quotes[] = $data->quote;
+            }
+        }
+    }
+
+    return $quotes;
+}
+
+function ikonic_quotes_func() {
+    $quotes = get_ikonic_quotes();
+
+    if (!empty($quotes)) {
+        $output = '<ol>';
+        foreach ($quotes as $quote) {
+            $output .= '<li>' . esc_html($quote) . '</li>';
+        }
+        $output .= '</ol>';
+        return $output;
+    } else {
+        return 'Failed to fetch Ikonic West quotes.';
+    }
+}
+add_shortcode('ikonic_qoutes', 'ikonic_quotes_func');
+
+
  ?>
