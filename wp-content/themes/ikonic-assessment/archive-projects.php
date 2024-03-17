@@ -33,12 +33,11 @@ get_header();
                 </article>
                 <?php
             endwhile;
-
             // pagination code
             the_posts_pagination(array(
-                'prev_text'          => __('Previous', 'textdomain'),
-                'next_text'          => __('Next', 'textdomain'),
-                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __('Page', 'textdomain') . ' </span>',
+                'prev_text'          => __('Previous', 'ikonic-test'),
+                'next_text'          => __('Next', 'ikonic-test'),
+                'before_page_number' => '<span class="meta-nav screen-reader-text">' . __('Page', 'ikonic-test') . ' </span>',
             ));
             
             wp_reset_postdata();
@@ -46,7 +45,6 @@ get_header();
             echo __('No projects found', 'textdomain');
         endif;
         ?>
-
     </main>
 </div>
 

@@ -48,7 +48,7 @@ add_action('init', function() {
     ]);
 });
 
-//Create an Ajax endpoint that will output the last three published "Projects" that belong in the "Project Type" 
+//An Ajax endpoint that will output the last three published "Projects" that belong in the "Project Type" 
 add_action( 'wp_ajax_nopriv_get_projects', 'get_projects_ajax' );
 add_action( 'wp_ajax_get_projects', 'get_projects_ajax' );
 
@@ -86,6 +86,22 @@ function get_projects_ajax() {
     wp_send_json_success( array( 'success' => true, 'data' => $projects ) );
 }
 
+
+
+//Coffee api Call Code
+function hs_give_me_coffee() {
+    $api_url = 'https://coffee.alexflipnote.dev/random.json';
+    $response = wp_remote_get( $api_url );
+    if ( is_wp_error( $response ) ) {
+        return 'Error getting coffee link';
+    }
+    $body = wp_remote_retrieve_body( $response );
+    $data = json_decode( $body );
+    if ( ! $data ) {
+        return 'Error parsing coffee data';
+    }
+    return $data->image;
+}
 
 
  ?>
