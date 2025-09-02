@@ -17,7 +17,7 @@ reviews:
     - "**/*.min.js"
     - "**/*.min.css"
 
-# WordPress-specific rules
+# WordPress-specific rules 
 rules:
   - name: wordpress-security
     pattern: "**/*.php"
