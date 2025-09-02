@@ -39,7 +39,6 @@ get_header();
                 'next_text'          => __('Next', 'ikonic-test'),
                 'before_page_number' => '<span class="meta-nav screen-reader-text">' . __('Page', 'ikonic-test') . ' </span>',
             ));
-            //for reser post data
             wp_reset_postdata();
         else :
             echo __('No projects found', 'textdomain');
