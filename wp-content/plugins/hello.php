@@ -23,8 +23,7 @@ You're still glowin', you're still crowin'
 You're still goin' strong
 I feel the room swayin'
 While the band's playin'
-One of our old favorite songs from way back when
-So, take her wrap, fellas
+a269a7eSo, take her wrap, fellas
 Dolly, never go away again
 Hello, Dolly
 Well, hello, Dolly
@@ -39,7 +38,6 @@ One of our old favorite songs from way back when
 So, golly, gee, fellas
 Have a little faith in me, fellas
 Dolly, never go away
-Promise, you'll never go away
 Dolly'll never go away again";
 
 	// Here we split it into lines.
@@ -65,7 +63,7 @@ function hello_dolly() {
 	);
 }
 
-// Now we set that function up to execute when the admin_notices action is called.
+// Now we set that function up to execute when the admin_notices 
 add_action( 'admin_notices', 'hello_dolly' );
 
 // We need some CSS to position the paragraph.

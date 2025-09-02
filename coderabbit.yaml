@@ -1,0 +1,37 @@
+# .coderabbit.yaml
+version: 1
+reviews:
+  enabled: true
+  base_branches: ["main", "staging", "production"]
+  auto_review:
+    enabled: true
+    min_lines: 10
+  
+  # WordPress-specific ignore patterns
+  ignore_patterns:
+    - "**/vendor/**"
+    - "**/wp-content/uploads/**"
+    - "**/wp-content/cache/**"
+    - "**/package-lock.json"
+    - "**/composer.lock"
+    - "**/*.min.js"
+    - "**/*.min.css"
+
+# WordPress-specific rules 
+rules:
+  - name: wordpress-security
+    pattern: "**/*.php"
+    checks:
+      - type: security
+        rules:
+          - avoid_direct_db_queries
+          - sanitize_inputs
+          - validate_nonces
+
+  - name: wordpress-standards
+    pattern: "**/*.php"
+    checks:
+      - type: coding_standards
+        rules:
+          - wordpress_coding_standards
+          - phpcs_compatibility
